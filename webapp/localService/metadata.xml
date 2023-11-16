@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="1.0" xmlns:edmx="http://schemas.microsoft.com/ado/2007/06/edmx"
+	xmlns:m="http://schemas.microsoft.com/ado/2007/08/dataservices/metadata" xmlns:sap="http://www.sap.com/Protocols/SAPData">
+	<edmx:DataServices m:DataServiceVersion="2.0">
+		<Schema Namespace="ZGW_LATAM_SRV" xml:lang="es" sap:schema-version="1" xmlns="http://schemas.microsoft.com/ado/2008/09/edm"><Annotation Term="Core.SchemaVersion" String="1.0.0" xmlns="http://docs.oasis-open.org/odata/ns/edm"/>
+			<EntityType Name="Company" sap:content-version="1">
+				<Key><PropertyRef Name="ID"/></Key><Property Name="ID" Type="Edm.String" Nullable="false" MaxLength="8" sap:unicode="false" sap:label="Id Compañia" sap:creatable="false"
+					sap:updatable="false" sap:sortable="false" sap:filterable="false"/><Property Name="TEXTO" Type="Edm.String" Nullable="false" MaxLength="40" sap:unicode="false" sap:label="Texto Compañia"
+					sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/></EntityType>
+			<EntityType Name="Ejecutivos" sap:content-version="1">
+				<Key><PropertyRef Name="PERNR"/></Key><Property Name="PERNR" Type="Edm.String" Nullable="false" MaxLength="12" sap:unicode="false" sap:label="Id empleado" sap:creatable="false"
+					sap:updatable="false" sap:sortable="false" sap:filterable="false"/><Property Name="NAME" Type="Edm.String" Nullable="false" MaxLength="40" sap:unicode="false" sap:label="Nombre Empleado"
+					sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/><Property Name="PBTXT" Type="Edm.String" Nullable="false" MaxLength="30" sap:unicode="false" sap:label="Compañia" sap:creatable="false"
+					sap:updatable="false" sap:sortable="false" sap:filterable="false"/></EntityType>
+			<EntityType Name="PuestosAplicar" sap:content-version="1">
+				<Key><PropertyRef Name="ID"/></Key><Property Name="ID" Type="Edm.String" Nullable="false" MaxLength="8" sap:unicode="false" sap:creatable="false" sap:updatable="false"
+					sap:sortable="false" sap:filterable="false"/><Property Name="PUESTO" Type="Edm.String" Nullable="false" MaxLength="40" sap:unicode="false" sap:creatable="false" sap:updatable="false"
+					sap:sortable="false" sap:filterable="false"/></EntityType>
+			<EntityType Name="Paises" sap:content-version="1">
+				<Key><PropertyRef Name="LAND1"/></Key><Property Name="LAND1" Type="Edm.String" Nullable="false" MaxLength="3" sap:unicode="false" sap:label="Clave Pais" sap:creatable="false"
+					sap:updatable="false" sap:sortable="false" sap:filterable="false"/><Property Name="LANDX" Type="Edm.String" Nullable="false" MaxLength="15" sap:unicode="false" sap:label="Denominacion Pais"
+					sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/></EntityType>
+			<EntityType Name="TablaEjecutivos" sap:content-version="1">
+				<Key><PropertyRef Name="ID_COMPANY"/><PropertyRef Name="PERNR"/><PropertyRef Name="ID_PUESTO"/></Key><Property Name="ID_COMPANY" Type="Edm.String" Nullable="false" MaxLength="8" sap:unicode="false" sap:label="Id Compañia"
+					sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/><Property Name="TEXTO" Type="Edm.String" Nullable="false" MaxLength="40" sap:unicode="false" sap:label="Compañia" sap:creatable="false"
+					sap:updatable="false"/><Property Name="PERNR" Type="Edm.String" Nullable="false" MaxLength="12" sap:unicode="false" sap:label="Id empleado" sap:creatable="false"
+					sap:updatable="false"/><Property Name="NAME" Type="Edm.String" Nullable="false" MaxLength="40" sap:unicode="false" sap:label="Nombre Empleado"
+					sap:creatable="false" sap:updatable="false"/><Property Name="EDAD" Type="Edm.String" Nullable="false" MaxLength="3" sap:unicode="false" sap:label="Edad" sap:creatable="false"
+					sap:updatable="false"/><Property Name="PAIS" Type="Edm.String" Nullable="false" MaxLength="15" sap:unicode="false" sap:label="Pais" sap:creatable="false"
+					sap:updatable="false"/><Property Name="TITULO" Type="Edm.String" Nullable="false" MaxLength="80" sap:unicode="false" sap:label="Titulo" sap:creatable="false"
+					sap:updatable="false"/><Property Name="FECHA_GRADO" Type="Edm.String" Nullable="false" MaxLength="8" sap:unicode="false" sap:label="Fecha grado"
+					sap:creatable="false" sap:updatable="false"/><Property Name="POSICION" Type="Edm.String" Nullable="false" MaxLength="40" sap:unicode="false" sap:label="Posición Objetivo"
+					sap:creatable="false" sap:updatable="false"/><Property Name="FECHA_NOMBRAMIENTO" Type="Edm.String" Nullable="false" MaxLength="8" sap:unicode="false" sap:label="Fecha nombramiento"
+					sap:creatable="false" sap:updatable="false"/><Property Name="ANTIGUEDAD" Type="Edm.String" Nullable="false" MaxLength="3" sap:unicode="false" sap:label="Antiguedad"
+					sap:creatable="false" sap:updatable="false"/><Property Name="CARGO" Type="Edm.String" Nullable="false" MaxLength="25" sap:unicode="false" sap:label="Cargo Actual" sap:creatable="false"
+					sap:updatable="false"/><Property Name="ID_PUESTO" Type="Edm.String" Nullable="false" MaxLength="8" sap:unicode="false" sap:label="Id Puesto" sap:creatable="false"
+					sap:updatable="false" sap:sortable="false" sap:filterable="false"/></EntityType>
+			<EntityType Name="InfoBasica" sap:content-version="1">
+				<Key><PropertyRef Name="PERNR"/></Key><Property Name="PERNR" Type="Edm.String" Nullable="false" MaxLength="8" sap:unicode="false" sap:label="Id empleado" sap:creatable="false"
+					sap:updatable="false" sap:sortable="false" sap:filterable="false"/><Property Name="NOM_EMPLEADO" Type="Edm.String" Nullable="false" MaxLength="40" sap:unicode="false" sap:label="Nombre Empleado "
+					sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/><Property Name="TIPO_DOC" Type="Edm.String" Nullable="false" MaxLength="30" sap:unicode="false" sap:label="Tipo documento"
+					sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/><Property Name="DOCUMENTO" Type="Edm.String" Nullable="false" MaxLength="30" sap:unicode="false" sap:label="Documento" sap:creatable="false"
+					sap:updatable="false" sap:sortable="false" sap:filterable="false"/><Property Name="APLICANDO" Type="Edm.String" Nullable="false" MaxLength="2" sap:unicode="false" sap:label="Aplicando a"
+					sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/><Property Name="REGION" Type="Edm.String" Nullable="false" MaxLength="30" sap:unicode="false" sap:label="Región" sap:creatable="false"
+					sap:updatable="false" sap:sortable="false" sap:filterable="false"/><Property Name="ESTATUS" Type="Edm.String" Nullable="false" MaxLength="30" sap:unicode="false" sap:label="Estatus" sap:creatable="false"
+					sap:updatable="false" sap:sortable="false" sap:filterable="false"/><Property Name="COMPANY" Type="Edm.String" Nullable="false" MaxLength="30" sap:unicode="false" sap:label="Compañia" sap:creatable="false"
+					sap:updatable="false" sap:sortable="false" sap:filterable="false"/><Property Name="EDAD" Type="Edm.String" Nullable="false" MaxLength="3" sap:unicode="false" sap:label="Edad" sap:creatable="false"
+					sap:updatable="false" sap:sortable="false" sap:filterable="false"/><Property Name="FOTO" Type="Edm.Binary" Nullable="false" sap:unicode="false" sap:label="Foto empleado" sap:creatable="false"
+					sap:updatable="false" sap:sortable="false" sap:filterable="false"/></EntityType>
+			<EntityType Name="EducacionForm" sap:content-version="1">
+				<Key><PropertyRef Name="PERNR"/><PropertyRef Name="TIPO_EDU"/><PropertyRef Name="TIPO_EDU_TXT"/><PropertyRef Name="FORMACION"/></Key><Property Name="PERNR" Type="Edm.String" Nullable="false" MaxLength="8" sap:unicode="false" sap:label="Id empleado" sap:creatable="false"
+					sap:updatable="false" sap:sortable="false" sap:filterable="false"/><Property Name="TIPO_EDU" Type="Edm.String" Nullable="false" MaxLength="2" sap:unicode="false" sap:label="Tipo educación"
+					sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/><Property Name="TIPO_EDU_TXT" Type="Edm.String" Nullable="false" MaxLength="20" sap:unicode="false" sap:label="Texto Tipo Educación"
+					sap:creatable="false" sap:updatable="false"/><Property Name="FORMACION" Type="Edm.String" Nullable="false" MaxLength="80" sap:unicode="false" sap:label="Formación" sap:creatable="false"
+					sap:updatable="false"/><Property Name="INSTITU" Type="Edm.String" Nullable="false" MaxLength="80" sap:unicode="false" sap:label="Institución" sap:creatable="false"
+					sap:updatable="false"/><Property Name="FECHA_DE" Type="Edm.String" Nullable="false" MaxLength="10" sap:unicode="false" sap:label="Fecha de" sap:creatable="false"
+					sap:updatable="false"/><Property Name="FECHA_A" Type="Edm.String" Nullable="false" MaxLength="10" sap:unicode="false" sap:label="Fecha a" sap:creatable="false"
+					sap:updatable="false"/></EntityType>
+			<EntityType Name="HistoriaLaboralPrev" sap:content-version="1">
+				<Key><PropertyRef Name="PERNR"/><PropertyRef Name="EMPRESA"/><PropertyRef Name="CARGO"/></Key><Property Name="PERNR" Type="Edm.String" Nullable="false" MaxLength="8" sap:unicode="false" sap:label="Id empleado " sap:creatable="false"
+					sap:updatable="false" sap:sortable="false" sap:filterable="false"/><Property Name="EMPRESA" Type="Edm.String" Nullable="false" MaxLength="60" sap:unicode="false" sap:label="Empresa" sap:creatable="false"
+					sap:updatable="false" sap:sortable="false" sap:filterable="false"/><Property Name="CARGO" Type="Edm.String" Nullable="false" MaxLength="25" sap:unicode="false" sap:label="Cargo" sap:creatable="false"
+					sap:updatable="false" sap:sortable="false" sap:filterable="false"/><Property Name="DURACION" Type="Edm.String" Nullable="false" MaxLength="4" sap:unicode="false" sap:label="Duración" sap:creatable="false"
+					sap:updatable="false" sap:sortable="false" sap:filterable="false"/><Property Name="FECHA_INGRESO" Type="Edm.String" Nullable="false" MaxLength="10" sap:unicode="false" sap:label="Fecha ingreso"
+					sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/><Property Name="FECHA_RETIRO" Type="Edm.String" Nullable="false" MaxLength="10" sap:unicode="false" sap:label="Fecha retiro"
+					sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/></EntityType>
+			<EntityType Name="CursosTomados" sap:content-version="1">
+				<Key><PropertyRef Name="PERNR"/><PropertyRef Name="INSTI"/><PropertyRef Name="FECHA_FIN"/></Key><Property Name="PERNR" Type="Edm.String" Nullable="false" MaxLength="8" sap:unicode="false" sap:label="Id empleado" sap:creatable="false"
+					sap:updatable="false" sap:sortable="false" sap:filterable="false"/><Property Name="INSTI" Type="Edm.String" Nullable="false" MaxLength="80" sap:unicode="false" sap:label="Institución" sap:creatable="false"
+					sap:updatable="false"/><Property Name="FECHA_FIN" Type="Edm.String" Nullable="false" MaxLength="10" sap:unicode="false" sap:label="Fecha Fin" sap:creatable="false"
+					sap:updatable="false"/><Property Name="MODALIDAD" Type="Edm.String" Nullable="false" MaxLength="40" sap:unicode="false" sap:label="Modalidad" sap:creatable="false"
+					sap:updatable="false"/><Property Name="CURSO" Type="Edm.String" Nullable="false" MaxLength="40" sap:unicode="false" sap:label="Curso" sap:creatable="false"
+					sap:updatable="false" sap:sortable="false" sap:filterable="false"/></EntityType>
+			<EntityType Name="PlanCarreraPro" sap:content-version="1">
+				<Key><PropertyRef Name="PERNR"/><PropertyRef Name="PAIS"/><PropertyRef Name="COMPANY"/><PropertyRef Name="DIVISION"/><PropertyRef Name="CARGO"/></Key><Property Name="PERNR" Type="Edm.String" Nullable="false" MaxLength="8" sap:unicode="false" sap:label="Id empleado" sap:creatable="false"
+					sap:updatable="false" sap:sortable="false" sap:filterable="false"/><Property Name="PAIS" Type="Edm.String" Nullable="false" MaxLength="15" sap:unicode="false" sap:label="Pais" sap:creatable="false"
+					sap:updatable="false"/><Property Name="COMPANY" Type="Edm.String" Nullable="false" MaxLength="30" sap:unicode="false" sap:label="Compañia " sap:creatable="false"
+					sap:updatable="false"/><Property Name="DIVISION" Type="Edm.String" Nullable="false" MaxLength="30" sap:unicode="false" sap:label="División" sap:creatable="false"
+					sap:updatable="false"/><Property Name="CARGO" Type="Edm.String" Nullable="false" MaxLength="40" sap:unicode="false" sap:label="Cargo" sap:creatable="false"
+					sap:updatable="false"/><Property Name="DURACION" Type="Edm.String" Nullable="false" MaxLength="4" sap:unicode="false" sap:label="Duración" sap:creatable="false"
+					sap:updatable="false"/><Property Name="FECHA_INICIO" Type="Edm.String" Nullable="false" MaxLength="8" sap:unicode="false" sap:label="Fecha inicio"
+					sap:creatable="false" sap:updatable="false"/><Property Name="FECHA_FIN" Type="Edm.String" Nullable="false" MaxLength="8" sap:unicode="false" sap:label="Fecha fin" sap:creatable="false"
+					sap:updatable="false"/></EntityType>
+			<EntityType Name="HistoriaLabMitsu" sap:content-version="1">
+				<Key><PropertyRef Name="PERNR"/><PropertyRef Name="PAIS"/><PropertyRef Name="COMPANY"/><PropertyRef Name="CARGO"/></Key><Property Name="PERNR" Type="Edm.String" Nullable="false" MaxLength="8" sap:unicode="false" sap:label="Empleado" sap:creatable="false"
+					sap:updatable="false" sap:sortable="false" sap:filterable="false"/><Property Name="PAIS" Type="Edm.String" Nullable="false" MaxLength="25" sap:unicode="false" sap:label="Pais" sap:creatable="false"
+					sap:updatable="false"/><Property Name="COMPANY" Type="Edm.String" Nullable="false" MaxLength="30" sap:unicode="false" sap:label="Compañia" sap:creatable="false"
+					sap:updatable="false"/><Property Name="CARGO" Type="Edm.String" Nullable="false" MaxLength="40" sap:unicode="false" sap:label="Cargo" sap:creatable="false"
+					sap:updatable="false"/><Property Name="DURACION" Type="Edm.String" Nullable="false" MaxLength="4" sap:unicode="false" sap:label="Duración" sap:creatable="false"
+					sap:updatable="false"/><Property Name="FECHA_INGRESO" Type="Edm.String" Nullable="false" MaxLength="8" sap:unicode="false" sap:label="Fecha ingreso "
+					sap:creatable="false" sap:updatable="false"/><Property Name="FECHA_RETIRO" Type="Edm.String" Nullable="false" MaxLength="8" sap:unicode="false" sap:label="Fecha retiro"
+					sap:creatable="false" sap:updatable="false"/></EntityType>
+			<EntityType Name="CompetenciasReq" sap:content-version="1">
+				<Key><PropertyRef Name="PERNR"/><PropertyRef Name="COMPETENCIA"/><PropertyRef Name="ITEM"/></Key><Property Name="PERNR" Type="Edm.String" Nullable="false" MaxLength="8" sap:unicode="false" sap:label="Empleado" sap:creatable="false"
+					sap:updatable="false" sap:sortable="false" sap:filterable="false"/><Property Name="COMPETENCIA" Type="Edm.String" Nullable="false" MaxLength="40" sap:unicode="false" sap:label="Competencia"
+					sap:creatable="false" sap:updatable="false"/><Property Name="ITEM" Type="Edm.String" Nullable="false" MaxLength="40" sap:unicode="false" sap:label="Item" sap:creatable="false"
+					sap:updatable="false"/><Property Name="EXPERIENCIA" Type="Edm.String" Nullable="false" MaxLength="40" sap:unicode="false" sap:label="Experiencia"
+					sap:creatable="false" sap:updatable="false"/><Property Name="FUNCIONES" Type="Edm.String" Nullable="false" MaxLength="40" sap:unicode="false" sap:label="Funciones" sap:creatable="false"
+					sap:updatable="false"/><Property Name="PLAN" Type="Edm.String" Nullable="false" MaxLength="2000" sap:unicode="false" sap:label="Plan" sap:creatable="false"
+					sap:updatable="false" sap:sortable="false" sap:filterable="false"/><Property Name="PERIODO" Type="Edm.String" Nullable="false" MaxLength="4" sap:unicode="false" sap:label="Periodo" sap:creatable="false"
+					sap:updatable="false" sap:sortable="false" sap:filterable="false"/><Property Name="CLASE" Type="Edm.String" Nullable="false" MaxLength="1" sap:unicode="false" sap:label="Clase" sap:creatable="false"
+					sap:updatable="false" sap:sortable="false" sap:filterable="false"/></EntityType>
+			<EntityType Name="FotoPersonal" m:HasStream="true" sap:content-version="1">
+				<Key><PropertyRef Name="PERNR"/></Key><Property Name="PERNR" Type="Edm.String" Nullable="false" MaxLength="8" sap:unicode="false" sap:label="Empleado" sap:creatable="false"
+					sap:updatable="false" sap:sortable="false" sap:filterable="false"/><Property Name="FILENAME" Type="Edm.String" Nullable="false" MaxLength="255" sap:unicode="false" sap:creatable="false" sap:updatable="false"
+					sap:sortable="false" sap:filterable="false"/><Property Name="VALUE" Type="Edm.Binary" Nullable="false" sap:unicode="false" sap:creatable="false" sap:updatable="false"
+					sap:sortable="false" sap:filterable="false"/><Property Name="MIMETYPE" Type="Edm.String" Nullable="false" MaxLength="100" sap:unicode="false" sap:creatable="false" sap:updatable="false"
+					sap:sortable="false" sap:filterable="false"/></EntityType>
+			<EntityContainer Name="ZGW_LATAM_SRV_Entities" m:IsDefaultEntityContainer="true" sap:supported-formats="atom json xlsx"><EntitySet Name="CompanySet" EntityType="ZGW_LATAM_SRV.Company" sap:creatable="false" sap:updatable="false" sap:deletable="false"
+				sap:pageable="false" sap:addressable="false" sap:content-version="1"/><EntitySet Name="EjecutivosSet" EntityType="ZGW_LATAM_SRV.Ejecutivos" sap:creatable="false" sap:updatable="false" sap:deletable="false"
+				sap:pageable="false" sap:addressable="false" sap:content-version="1"/><EntitySet Name="PuestosAplicarSet" EntityType="ZGW_LATAM_SRV.PuestosAplicar" sap:creatable="false" sap:updatable="false"
+				sap:deletable="false" sap:pageable="false" sap:addressable="false" sap:content-version="1"/><EntitySet Name="PaisesSet" EntityType="ZGW_LATAM_SRV.Paises" sap:creatable="false" sap:updatable="false" sap:deletable="false"
+				sap:pageable="false" sap:addressable="false" sap:content-version="1"/><EntitySet Name="TablaEjecutivosSet" EntityType="ZGW_LATAM_SRV.TablaEjecutivos" sap:creatable="false" sap:updatable="false"
+				sap:deletable="false" sap:pageable="false" sap:addressable="false" sap:content-version="1"/><EntitySet Name="InfoBasicaSet" EntityType="ZGW_LATAM_SRV.InfoBasica" sap:creatable="false" sap:updatable="false" sap:deletable="false"
+				sap:pageable="false" sap:addressable="false" sap:content-version="1"/><EntitySet Name="EducacionFormSet" EntityType="ZGW_LATAM_SRV.EducacionForm" sap:creatable="false" sap:updatable="false"
+				sap:deletable="false" sap:pageable="false" sap:addressable="false" sap:content-version="1"/><EntitySet Name="HistoriaLaboralPrevSet" EntityType="ZGW_LATAM_SRV.HistoriaLaboralPrev" sap:creatable="false" sap:updatable="false"
+				sap:deletable="false" sap:pageable="false" sap:addressable="false" sap:content-version="1"/><EntitySet Name="CursosTomadosSet" EntityType="ZGW_LATAM_SRV.CursosTomados" sap:creatable="false" sap:updatable="false"
+				sap:deletable="false" sap:pageable="false" sap:addressable="false" sap:content-version="1"/><EntitySet Name="PlanCarreraProSet" EntityType="ZGW_LATAM_SRV.PlanCarreraPro" sap:creatable="false" sap:updatable="false"
+				sap:deletable="false" sap:pageable="false" sap:addressable="false" sap:content-version="1"/><EntitySet Name="HistoriaLabMitsuSet" EntityType="ZGW_LATAM_SRV.HistoriaLabMitsu" sap:creatable="false" sap:updatable="false"
+				sap:deletable="false" sap:pageable="false" sap:addressable="false" sap:content-version="1"/><EntitySet Name="CompetenciasReqSet" EntityType="ZGW_LATAM_SRV.CompetenciasReq" sap:creatable="false" sap:updatable="false"
+				sap:deletable="false" sap:pageable="false" sap:addressable="false" sap:content-version="1"/><EntitySet Name="FotoPersonalSet" EntityType="ZGW_LATAM_SRV.FotoPersonal" sap:creatable="false" sap:updatable="false" sap:deletable="false"
+				sap:pageable="false" sap:addressable="false" sap:content-version="1"/></EntityContainer><atom:link rel="self"
+				href="https://webidecp-vexrfilxxr.dispatcher.us4.hana.ondemand.com/destinations/Melco_Dev/sap/opu/odata/sap/ZGW_LATAM_SRV/$metadata"
+				xmlns:atom="http://www.w3.org/2005/Atom"/><atom:link rel="latest-version"
+				href="https://webidecp-vexrfilxxr.dispatcher.us4.hana.ondemand.com/destinations/Melco_Dev/sap/opu/odata/sap/ZGW_LATAM_SRV/$metadata"
+				xmlns:atom="http://www.w3.org/2005/Atom"/></Schema>
+	</edmx:DataServices>
+</edmx:Edmx>

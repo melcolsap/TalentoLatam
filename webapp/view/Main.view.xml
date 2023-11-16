@@ -1,0 +1,377 @@
+<mvc:View xmlns:mvc="sap.ui.core.mvc" xmlns="sap.m" xmlns:l="sap.ui.layout" xmlns:form="sap.ui.layout.form" xmlns:core="sap.ui.core"
+	xmlns:layout="sap.ui.commons.layout" xmlns:smartFilterBar="sap.ui.comp.smartfilterbar" xmlns:smartTable="sap.ui.comp.smarttable"
+	controllerName="co.com.ZUI5_TALENTO_LATAM.ZUI5_TALENTO_LATAM.controller.Main" displayBlock="true">
+	<Page id="page" title="Talento Latam" enableScrolling="false">
+		<content>
+			<layout:AbsoluteLayout horizontalScrolling="Auto" verticalScrolling="Auto">
+				<layout:positions>
+					<layout:PositionContainer left="50px" top="auto">
+						<layout:control>
+							<Image src="images/LogoMitsuNew.png" height="100px" width="250px" visible="true" densityAware="false"/>
+						</layout:control>
+					</layout:PositionContainer>
+					<layout:PositionContainer left="1px" top="100px">
+						<layout:control>
+							<HBox alignItems="Stretch" direction="Row" fitContainer="false" width="auto" height="auto" justifyContent="Start" renderType="Div"
+								visible="true" displayInline="false">
+								<items>
+									<Image src="images/LogoMitsuNew.png" height="100px" width="250px" visible="true" densityAware="false"/>
+								</items>
+								<layoutData/>
+							</HBox>
+							<form:Form width="100%" editable="true" visible="true">
+								<form:title>
+									<core:Title text="PARÁMETROS DE SELECCIÓN" level="H2" class="sapUiSmallMargin"/>
+								</form:title>
+								<form:formContainers>
+									<form:FormContainer visible="true">
+										<form:formElements>
+											<form:FormElement visible="true">
+												<form:label>
+													<Label text="Periodo evaluado" design="Standard" width="100%" required="false" textAlign="Begin" textDirection="Inherit" visible="true"/>
+												</form:label>
+												<form:fields>
+													<DatePicker id="idDatePickerFecha" change="submitFecha" width="auto" displayFormat="y" required="false" valueStateText="Invalid entry"
+														enabled="true" visible="true" valueFormat="ddMMyyyy"/>
+												</form:fields>
+											</form:FormElement>
+											<form:FormElement visible="true">
+												<form:label>
+													<Label text="Nombre de compañía" design="Standard" width="100%" required="false" textAlign="Begin" textDirection="Inherit" visible="true"/>
+												</form:label>
+												<form:fields>
+													<ComboBox editable="true" id="IdComboNomCom" enabled="true" visible="true" width="auto" maxWidth="100%" items="{ path: '/CompanySet'}">
+														<core:ListItem key="{ID}" text="{TEXTO}" additionalText="{ID}"/>
+													</ComboBox>
+												</form:fields>
+											</form:FormElement>
+											<form:FormElement visible="true">
+												<form:label>
+													<Label text="Ejecutivo" design="Standard" width="100%" required="false" textAlign="Begin" textDirection="Inherit" visible="true"/>
+												</form:label>
+												<form:fields>
+													<Input id="InputEjecutivo" type="Text" showValueHelp="true" enabled="true" visible="true" width="auto" valueHelpOnly="true" required="false"
+														valueStateText="Invalid entry" maxLength="0" valueHelpRequest="onSearchEjecutivo"/>
+												</form:fields>
+											</form:FormElement>
+											<form:FormElement visible="true">
+												<form:label>
+													<Label text="Aplicando a" design="Standard" width="100%" required="false" textAlign="Begin" textDirection="Inherit" visible="true"/>
+												</form:label>
+												<form:fields>
+													<ComboBox id="InputAplicando" editable="true" enabled="true" change=".onAplicando" visible="true" width="auto" valueState="None"
+														maxWidth="100%">
+														<items>
+															<core:Item text="P1" enabled="true" key="P1"/>
+															<core:Item text="P2" enabled="true" key="P2"/>
+														</items>
+													</ComboBox>
+												</form:fields>
+											</form:FormElement>
+											<form:FormElement visible="true">
+												<form:label>
+													<Label text="Pais de Residencia" design="Standard" width="100%" required="false" textAlign="Begin" textDirection="Inherit" visible="true"/>
+												</form:label>
+												<form:fields>
+													<ComboBox editable="true" id="ComboAplicandoPais" enabled="true" visible="true" change=".onPais" width="auto" maxWidth="100%" 
+													 items="{ path: '/PaisesSet', length: 241 }">
+														<core:ListItem key="{LAND1}" text="{LANDX}" additionalText="{LAND1}"/>
+													</ComboBox>
+												</form:fields>
+											</form:FormElement>
+										</form:formElements>
+										<form:title/>
+									</form:FormContainer>
+								</form:formContainers>
+								<form:layout>
+									<form:ResponsiveGridLayout adjustLabelSpan="false" columnsL="2" labelSpanL="3" columnsM="1" labelSpanM="2" labelSpanS="12"/>
+								</form:layout>
+							</form:Form>
+						</layout:control>
+					</layout:PositionContainer>
+					<layout:PositionContainer left="950px" top="425px">
+						<layout:control>
+							<Button text="{i18n>Search}" type="Emphasized" iconFirst="true" width="113.69140625px" press="EnviarInfo" enabled="true" visible="true"
+								iconDensityAware="false"/>
+						</layout:control>
+					</layout:PositionContainer>
+					<layout:PositionContainer left="1098px" top="425px">
+						<layout:control>
+							<Button text="Cancelar" type="Default" iconFirst="true" width="113.69140625px" press="clearFiltrosIniciales" enabled="true" visible="true"
+								iconDensityAware="false"/>
+						</layout:control>
+					</layout:PositionContainer>
+					<layout:PositionContainer left="10px" top="525px">
+						<layout:control>
+							<form:SimpleForm editable="true" layout="ResponsiveGridLayout" id="form1">
+								<form:content>
+									<smartTable:SmartTable id="smartEjecutivos" entitySet="TablaEjecutivosSet" smartFilterId="smartFilterBar" useExportToExcel="true"
+										beforeExport="onBeforeExport" useVariantManagement="false" useTablePersonalisation="true" header="Ejecutivos" showRowCount="true"
+										persistencyKey="SmartTableRefApp_Explored" enableAutoBinding="false" beforeRebindTable="onBeforeRebind" tableType="ResponsiveTable"
+										demandPopin="true">
+										<!-- layout data used to make the table growing but the filter bar fixed -->
+										<Table id="TableEjecutivos" alternateRowColors="true" growing="true" growingScrollToLoad="true">
+											<columns>
+												<Column hAlign="Center">
+													<customData>
+														<core:CustomData key="p13nData" value='\{"columnKey": "TEXTO", "leadingProperty": "TEXTO", "filterProperty": "TEXTO", "columnIndex": 0}'/>
+													</customData>
+													<!--<FormattedText htmlText="&lt;strong>My Column&lt;/strong>" />-->
+													<Text text="Nombre compañía"></Text>
+												</Column>
+												
+												<Column hAlign="Center">
+													<customData>
+														<core:CustomData key="p13nData" value='\{"columnKey": "PERNR", "leadingProperty": "PERNR", "filterProperty": "PERNR", "columnIndex": 1}'/>
+													</customData>
+													<!--<FormattedText htmlText="&lt;strong>My Column&lt;/strong>" />-->
+													<Text text="Número del  Empleado"></Text>
+												</Column>
+												
+												<Column hAlign="Center">
+													<customData>
+														<core:CustomData key="p13nData" value='\{"columnKey": "NAME", "leadingProperty": "NAME", "filterProperty": "NAME", "columnIndex": 2}'/>
+													</customData>
+													<!--<FormattedText htmlText="&lt;strong>My Column&lt;/strong>" />-->
+													<Text text="Nombre Empleado"></Text>
+												</Column>
+												
+												<Column hAlign="Center">
+													<customData>
+														<core:CustomData key="p13nData" value='\{"columnKey": "PAIS", "leadingProperty": "PAIS", "filterProperty": "PAIS", "columnIndex": 3}'/>
+													</customData>
+													<!--<FormattedText htmlText="&lt;strong>My Column&lt;/strong>" />-->
+													<Text text="País"></Text>
+												</Column>
+												
+												
+												
+												<Column hAlign="Center">
+													<customData>
+														<core:CustomData key="p13nData" value='\{"columnKey": "TITULO", "leadingProperty": "TITULO", "filterProperty": "TITULO", "columnIndex": 4}'/>
+													</customData>
+													<!--<FormattedText htmlText="&lt;strong>My Column&lt;/strong>" />-->
+													<Text text="Formación"></Text>
+												</Column>
+												
+												
+													<Column hAlign="Center">
+													<customData>
+														<core:CustomData key="p13nData" value='\{"columnKey": "POSICION", "leadingProperty": "POSICION", "filterProperty": "POSICION", "columnIndex": 5}'/>
+													</customData>
+													<!--<FormattedText htmlText="&lt;strong>My Column&lt;/strong>" />-->
+													<Text text="Posición Objetivo"></Text>
+												</Column>
+												
+												<Column hAlign="Center">
+													<customData>
+														<core:CustomData key="p13nData"
+															value='\{"columnKey": "FECHA_GRADO", "leadingProperty": "FECHA_GRADO", "filterProperty": "FECHA_GRADO", "columnIndex": 6}'/>
+													</customData>
+													<!--<FormattedText htmlText="&lt;strong>My Column&lt;/strong>" />-->
+													<Text text="Fecha de grado"></Text>
+												</Column>
+												
+												<Column hAlign="Center">
+													<customData>
+														<core:CustomData key="p13nData" value='\{"columnKey": "ANTIGUEDAD", "leadingProperty": "ANTIGUEDAD", "filterProperty": "ANTIGUEDAD", "columnIndex": 7}'/>
+													</customData>
+													<!--<FormattedText htmlText="&lt;strong>My Column&lt;/strong>" />-->
+													<Text text="Antiguedad"></Text>
+												</Column>
+												
+												
+												<Column hAlign="Center">
+													<customData>
+														<core:CustomData key="p13nData"
+															value='\{"columnKey": "FECHA_NOMBRAMIENTO", "leadingProperty": "FECHA_NOMBRAMIENTO", "filterProperty": "FECHA_NOMBRAMIENTO", "columnIndex": 8}'/>
+													</customData>
+													<!--<FormattedText htmlText="&lt;strong>My Column&lt;/strong>" />-->
+													<Text text="Fecha de nombramiento"></Text>
+												</Column>
+												
+												<Column hAlign="Center">
+													<customData>
+														<core:CustomData key="p13nData" value='\{"columnKey": "CARGO", "leadingProperty": "CARGO", "filterProperty": "CARGO", "columnIndex": 9}'/>
+													</customData>
+													<!--<FormattedText htmlText="&lt;strong>My Column&lt;/strong>" />-->
+													<Text text="Cargo"></Text>
+												</Column>
+												
+												
+											</columns>
+											<items>
+												<ColumnListItem type="Navigation" press=".onRowSelectionChange">
+													<Text text="{TEXTO}"/>
+													<Text text="{PERNR}"/>	
+													<Text text="{NAME}"/>
+													<Text text="{PAIS}"/>
+													<Text text="{TITULO}"/>
+													<Text text="{POSICION}"/>
+													<Text text="{ path: 'FECHA_GRADO', formatter: '.FormatFecha.FormatteFecha'}"/>
+													<Text text="{ANTIGUEDAD}"/>
+													<Text text="{ path: 'FECHA_NOMBRAMIENTO', formatter: '.FormatFecha.FormatteFecha'}"/>
+													<Text text="{CARGO}"/>
+												</ColumnListItem>
+											</items>
+										</Table>
+									</smartTable:SmartTable>
+								</form:content>
+							</form:SimpleForm>
+							<!--<Table width="1216px" noDataText="No data" mode="None" showSeparators="All" growing="true" growingThreshold="20" growingScrollToLoad="true"-->
+							<!--	class="sapUiResponsiveMargin">-->
+							<!--	<infoToolbar>-->
+							<!--		<Toolbar width="100%" height="auto" design="Auto" visible="false" enabled="true">-->
+							<!--			<content>-->
+							<!--				<Label text="Label" design="Standard" width="100%" required="false" textAlign="Begin" textDirection="Inherit" visible="true"/>-->
+							<!--			</content>-->
+							<!--		</Toolbar>-->
+							<!--	</infoToolbar>-->
+							<!--	<headerToolbar>-->
+							<!--		<OverflowToolbar width="auto" height="auto" design="Transparent" visible="true" enabled="true">-->
+							<!--			<content>-->
+							<!--				<Title text="EJECUTIVOS" titleStyle="H2" width="auto" textAlign="Begin" visible="true" wrapping="false"/>-->
+							<!--				<ToolbarSpacer width=""/>-->
+							<!--				<OverflowToolbarButton text="Sort" type="Transparent" icon="sap-icon://sort" iconFirst="true" width="auto" enabled="true" visible="true"-->
+							<!--					iconDensityAware="false"/>-->
+							<!--				<OverflowToolbarButton text="Filter" type="Transparent" icon="sap-icon://filter" iconFirst="true" width="auto" enabled="true" visible="true"-->
+							<!--					iconDensityAware="false"/>-->
+							<!--				<OverflowToolbarButton text="Group" type="Transparent" icon="sap-icon://group-2" iconFirst="true" width="auto" enabled="true" visible="true"-->
+							<!--					iconDensityAware="false"/>-->
+							<!--				<OverflowToolbarButton text="Settings" type="Transparent" icon="sap-icon://action-settings" iconFirst="true" width="auto" enabled="true"-->
+							<!--					visible="true" iconDensityAware="false" press="_onOverflowToolbarButtonPress"/>-->
+							<!--			</content>-->
+							<!--		</OverflowToolbar>-->
+							<!--	</headerToolbar>-->
+							<!--	<columns>-->
+							<!--		<Column width="auto" hAlign="Left" vAlign="Top" minScreenWidth="Phone" demandPopin="false" popinDisplay="Inline" mergeDuplicates="false">-->
+							<!--			<header>-->
+							<!--				<Text text="EMPRESA" width="auto" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit" visible="true"/>-->
+							<!--			</header>-->
+							<!--			<footer/>-->
+							<!--		</Column>-->
+							<!--		<Column width="auto" hAlign="Left" vAlign="Top" minScreenWidth="Tablet" demandPopin="true" popinDisplay="Inline" mergeDuplicates="false">-->
+							<!--			<header>-->
+							<!--				<Text text="Ejecutivo" width="auto" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit" visible="true"/>-->
+							<!--			</header>-->
+							<!--			<footer/>-->
+							<!--		</Column>-->
+							<!--		<Column width="50px" hAlign="Left" vAlign="Top" minScreenWidth="Tablet" demandPopin="true" popinDisplay="Inline" mergeDuplicates="false">-->
+							<!--			<header>-->
+							<!--				<Text text="Edad" width="auto" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit" visible="true"/>-->
+							<!--			</header>-->
+							<!--			<footer/>-->
+							<!--		</Column>-->
+							<!--		<Column width="auto" hAlign="Left" vAlign="Top" minScreenWidth="Tablet" demandPopin="true" popinDisplay="Inline" mergeDuplicates="false">-->
+							<!--			<header>-->
+							<!--				<Text text="País de residencia" width="auto" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit" visible="true"/>-->
+							<!--			</header>-->
+							<!--			<footer/>-->
+							<!--		</Column>-->
+							<!--		<Column width="auto" hAlign="Left" vAlign="Top" minScreenWidth="Tablet" demandPopin="true" popinDisplay="Inline" mergeDuplicates="false">-->
+							<!--			<header>-->
+							<!--				<Text text="Título última educación" width="auto" maxLines="2" wrapping="true" textAlign="Begin" textDirection="Inherit" visible="true"/>-->
+							<!--			</header>-->
+							<!--			<footer/>-->
+							<!--		</Column>-->
+							<!--		<Column width="auto" hAlign="Left" vAlign="Top" minScreenWidth="Tablet" demandPopin="true" popinDisplay="Inline" mergeDuplicates="false">-->
+							<!--			<header>-->
+							<!--				<Text text="Fecha de grado" width="auto" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit" visible="true"/>-->
+							<!--			</header>-->
+							<!--			<footer/>-->
+							<!--		</Column>-->
+							<!--		<Column width="auto" hAlign="Left" vAlign="Top" minScreenWidth="Tablet" demandPopin="true" popinDisplay="Inline" mergeDuplicates="false">-->
+							<!--			<header>-->
+							<!--				<Text text="Posición objetivo" width="auto" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit" visible="true"/>-->
+							<!--			</header>-->
+							<!--			<footer/>-->
+							<!--		</Column>-->
+							<!--		<Column width="auto" hAlign="Left" vAlign="Top" minScreenWidth="Tablet" demandPopin="true" popinDisplay="Inline" mergeDuplicates="false">-->
+							<!--			<header>-->
+							<!--				<Text text="Fecha de nombramiento" width="auto" maxLines="2" wrapping="true" textAlign="Begin" textDirection="Inherit" visible="true"/>-->
+							<!--			</header>-->
+							<!--			<footer/>-->
+							<!--		</Column>-->
+							<!--		<Column width="auto" hAlign="Left" vAlign="Top" minScreenWidth="Tablet" demandPopin="true" popinDisplay="Inline" mergeDuplicates="false">-->
+							<!--			<header>-->
+							<!--				<Text text="Antiguedad en la empresa" width="auto" maxLines="2" wrapping="true" textAlign="Begin" textDirection="Inherit" visible="true"/>-->
+							<!--			</header>-->
+							<!--			<footer/>-->
+							<!--		</Column>-->
+							<!--		<Column width="auto" hAlign="Left" vAlign="Top" minScreenWidth="Tablet" demandPopin="true" popinDisplay="Inline" mergeDuplicates="false">-->
+							<!--			<header>-->
+							<!--				<Text text="Cargo Actual" width="auto" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit" visible="true"/>-->
+							<!--			</header>-->
+							<!--			<footer/>-->
+							<!--		</Column>-->
+							<!--	</columns>-->
+							<!--	<items>-->
+							<!--		<ColumnListItem type="Active" press="_onRowPress">-->
+							<!--			<cells>-->
+							<!--				<Text text="MELCOL" width="auto" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit" visible="true"/>-->
+							<!--				<Text text="Alejandro Niño Vélez" width="auto" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit" visible="true"/>-->
+							<!--				<Text text="37" width="auto" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit" visible="true"/>-->
+							<!--				<Text text="Colombia" width="auto" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit" visible="true"/>-->
+							<!--				<Text text="Ingeniero Industrial" width="auto" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit" visible="true"/>-->
+							<!--				<DatePicker width="auto" displayFormat="medium" required="false" valueStateText="Invalid entry" enabled="true" visible="true"-->
+							<!--					valueFormat="yyyyMMdd"/>-->
+							<!--				<Text text="P1" width="auto" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit" visible="true"/>-->
+							<!--				<Text text="01/01/2028" width="auto" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit" visible="true"/>-->
+							<!--				<Text text="16" width="auto" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit" visible="true"/>-->
+							<!--				<Text text="Subgerente Planta" width="auto" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit" visible="true"/>-->
+							<!--			</cells>-->
+							<!--		</ColumnListItem>-->
+							<!--		<ColumnListItem type="Active">-->
+							<!--			<cells>-->
+							<!--				<ObjectIdentifier title="MELCOL" text="" titleActive="false" visible="true"/>-->
+							<!--				<Text text="Sandra Rey" width="auto" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit" visible="true"/>-->
+							<!--				<Text text="30" width="auto" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit" visible="true"/>-->
+							<!--				<Text text="COLOMBIA" width="auto" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit" visible="true"/>-->
+							<!--				<Text text="Ingeniera civil" width="auto" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit" visible="true"/>-->
+							<!--				<DatePicker width="auto" displayFormat="medium" required="false" valueStateText="Invalid entry" enabled="true" visible="true"-->
+							<!--					valueFormat="yyyyMMdd"/>-->
+							<!--				<Text text="P1" width="auto" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit" visible="true"/>-->
+							<!--				<Text text="12/02/2025" width="auto" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit" visible="true"/>-->
+							<!--				<Text text="12" width="auto" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit" visible="true"/>-->
+							<!--				<Text text="Gerente RRHH" width="auto" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit" visible="true"/>-->
+							<!--			</cells>-->
+							<!--		</ColumnListItem>-->
+							<!--		<ColumnListItem type="Active">-->
+							<!--			<cells>-->
+							<!--				<ObjectIdentifier title="MELMEX" text="" titleActive="false" visible="true"/>-->
+							<!--				<Text text="Laura Rodriguez" width="auto" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit" visible="true"/>-->
+							<!--				<Text text="28" width="auto" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit" visible="true"/>-->
+							<!--				<Text text="MEXICO" width="auto" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit" visible="true"/>-->
+							<!--				<Text text="Ingeniera Electrónica" width="auto" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit" visible="true"/>-->
+							<!--				<DateRangeSelection width="auto" displayFormat="medium" required="false" valueStateText="Invalid entry" enabled="true" visible="true"-->
+							<!--					change="_onDateRangeSelectionChange1"/>-->
+							<!--				<Text text="P1" width="auto" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit" visible="true"/>-->
+							<!--				<Text text="01/01/2030" width="auto" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit" visible="true"/>-->
+							<!--				<Text text="22" width="auto" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit" visible="true"/>-->
+							<!--				<Text text="Directora Financiera" width="auto" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit" visible="true"/>-->
+							<!--			</cells>-->
+							<!--		</ColumnListItem>-->
+							<!--		<ColumnListItem type="Active">-->
+							<!--			<cells>-->
+							<!--				<ObjectIdentifier title="COHECO" text="" titleActive="false" visible="true"/>-->
+							<!--				<Text text="Pedro Perez" width="auto" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit" visible="true"/>-->
+							<!--				<Text text="45" width="auto" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit" visible="true"/>-->
+							<!--				<Text text="ECUADOR" width="auto" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit" visible="true"/>-->
+							<!--				<Text text="Ingeniero Industrial" width="auto" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit" visible="true"/>-->
+							<!--				<DateRangeSelection width="auto" displayFormat="medium" required="false" valueStateText="Invalid entry" enabled="true" visible="true"-->
+							<!--					change="_onDateRangeSelectionChange2"/>-->
+							<!--				<Text text="P1" width="auto" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit" visible="true"/>-->
+							<!--				<Text text="01/01/2028" width="auto" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit" visible="true"/>-->
+							<!--				<Text text="16" width="auto" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit" visible="true"/>-->
+							<!--				<Text text="Subgerente Planta" width="auto" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit" visible="true"/>-->
+							<!--			</cells>-->
+							<!--		</ColumnListItem>-->
+							<!--	</items>-->
+							<!--</Table>-->
+						</layout:control>
+					</layout:PositionContainer>
+				</layout:positions>
+			</layout:AbsoluteLayout>
+		</content>
+	</Page>
+</mvc:View>

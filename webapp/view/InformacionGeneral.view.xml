@@ -1,0 +1,441 @@
+<mvc:View xmlns:core="sap.ui.core" xmlns:f="sap.f" xmlns:mvc="sap.ui.core.mvc" xmlns="sap.m" xmlns:form="sap.ui.layout.form" xmlns:layout1="sap.ui.layout" xmlns:chart="sap.chart" xmlns:data="sap.chart.data" xmlns:smartFilterBar="sap.ui.comp.smartfilterbar" xmlns:commons="sap.suite.ui.commons" xmlns:viz.data="sap.viz.ui5.data" xmlns:viz.feeds="sap.viz.ui5.controls.common.feeds" xmlns:viz="sap.viz.ui5.controls" xmlns:smartTable="sap.ui.comp.smarttable" controllerName="co.com.ZUI5_TALENTO_LATAM.ZUI5_TALENTO_LATAM.controller.InformacionGeneral">
+	<Page>
+		<content>
+			<form:Form width="auto" editable="true" visible="true" class="sapUiTinyMargin">
+				
+				<form:title>
+					<core:Title text="Información básica" level="Auto" class="sapUiTinyMargin"/>
+						
+				</form:title>
+				<form:formContainers>
+					<form:FormContainer  id="container2" expanded="false">
+					
+					</form:FormContainer>
+					<form:FormContainer id="container3" expanded="false">
+						<form:FormElement visible="true">
+								<form:label>
+									<Label text="" design="Standard" width="100%" required="false" textAlign="Begin" textDirection="Inherit" visible="true"/>
+								</form:label>
+								<form:fields>
+									<Text id="SPACE" width="auto" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit" visible="true"/>
+									<f:Avatar id="Avatar"  displaySize="XL" showBorder="true" press="onPress"/>
+								</form:fields>
+							</form:FormElement>
+					</form:FormContainer>
+					<form:FormContainer visible="true">
+						<form:formElements>
+							
+							<form:FormElement visible="true">
+								<form:label>
+									<Label text="Aplicando a" design="Bold" width="100%" required="false" textAlign="Begin" textDirection="Inherit" visible="true"/>
+								</form:label>
+								<form:fields>
+									<Text id="TextAplicando" text="" width="auto" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit" visible="true"/>
+								</form:fields>
+							</form:FormElement>
+							<form:FormElement visible="true">
+								<form:label>
+									<Label text="Región" design="Standard" width="100%" required="false" textAlign="Begin" textDirection="Inherit" visible="true"/>
+								</form:label>
+								<form:fields>
+									<Text id="TextRegion" text="" width="auto" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit" visible="true"/>
+								</form:fields>
+							</form:FormElement>
+							<form:FormElement visible="true">
+								<form:label>
+									<Label text="Estatus" design="Standard" width="100%" required="false" textAlign="Begin" textDirection="Inherit" visible="true"/>
+								</form:label>
+								<form:fields>
+									<Text id="TextEstatus" text="" width="auto" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit" visible="true"/>
+								</form:fields>
+							</form:FormElement>
+							<form:FormElement visible="true">
+								<form:label>
+									<Label text="Periodo" design="Standard" width="100%" required="false" textAlign="Begin" textDirection="Inherit" visible="true"/>
+								</form:label>
+								<form:fields>
+									<Text id="TextPeriodo" width="167.734375px" maxLines="2" wrapping="false" textAlign="Begin" textDirection="Inherit" visible="true"/>
+									<DatePicker id="idDatePickerFecha" change="submitFecha" width="auto" displayFormat="yyyy" required="false" valueStateText="Invalid entry" enabled="true" visible="true" valueFormat="yyyy"/>
+									<Button text="Consultar" press="SearchPress" type="Accept" iconFirst="true" width="112.48046875px" enabled="true" visible="true" iconDensityAware="false"/>
+								</form:fields>
+							</form:FormElement>
+						</form:formElements>
+						<form:title/>
+					</form:FormContainer>
+					
+					<form:FormContainer visible="true">
+						<form:formElements>
+							<!--<form:FormElement visible="true">-->
+							<!--	<form:label>-->
+							<!--		<Label text="" design="Standard" width="100%" required="false" textAlign="Begin" textDirection="Inherit" visible="true"/>-->
+							<!--	</form:label>-->
+							<!--	<form:fields>-->
+							<!--		<Text id="SPACE" width="auto" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit" visible="true"/>-->
+							<!--		<Avatar  displaySize="XL" showBorder="true" press="onPress"/>-->
+							<!--	</form:fields>-->
+							<!--</form:FormElement>-->
+							<form:FormElement visible="true">
+								<form:label>
+									<Label text="Nombre Compañía" design="Standard" width="100%" required="false" textAlign="Begin" textDirection="Inherit" visible="true"/>
+								</form:label>
+								<form:fields>
+									<Text id="TextNComp" width="auto" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit" visible="true"/>
+								</form:fields>
+							</form:FormElement>
+							<form:FormElement visible="true">
+								<form:label>
+									<Label text="Nombre" design="Standard" width="100%" required="false" textAlign="Begin" textDirection="Inherit" visible="true"/>
+								</form:label>
+								<form:fields>
+									<Text id="TextNombre" width="auto" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit" visible="true"/>
+								</form:fields>
+							</form:FormElement>
+							<form:FormElement visible="true">
+								<form:label>
+									<Label text="ID Empleado SAP" design="Standard" width="100%" required="false" textAlign="Begin" textDirection="Inherit" visible="true"/>
+								</form:label>
+								<form:fields>
+									<Text id="TextIDEmpleado" width="auto" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit" visible="true"/>
+								</form:fields>
+							</form:FormElement>
+							<form:FormElement visible="true" class="sapUiTinyMargin">
+								<form:label>
+									<Label text="DNI" design="Standard" width="100%" required="false" textAlign="Begin" textDirection="Inherit" visible="true"/>
+								</form:label>
+								<form:fields>
+									<Text id="TextDNI" width="auto" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit" visible="true"/>
+								</form:fields>
+							</form:FormElement>
+						</form:formElements>
+						<form:title/>
+					</form:FormContainer>
+					
+					<!--<form:FormContainer title="Title" id="container2" expanded="false">-->
+					
+					<!--    <form:formElements>-->
+					
+					<!--        <form:FormElement label="Label" id="element8">-->
+					
+					<!--            <form:fields>-->
+					
+					<!--                <Input width="100%" id="input0"/>-->
+					
+					<!--            </form:fields>-->
+					
+					<!--        </form:FormElement>-->
+					
+					<!--    </form:formElements>-->
+					
+					<!--</form:FormContainer>-->
+					
+			
+				</form:formContainers>
+				<form:layout>
+					<form:ResponsiveGridLayout adjustLabelSpan="false" columnsL="2" labelSpanL="3" columnsM="1" labelSpanM="2" labelSpanS="12"/>
+				</form:layout>
+			</form:Form>
+			<layout1:VerticalLayout width="100%" id="layout10">
+				<smartTable:SmartTable id="smartEducacionFormal" entitySet="EducacionFormSet" smartFilterId="smartFilterBar" 
+				                       useExportToExcel="true" beforeExport="onBeforeExport" useVariantManagement="false" 
+				                       useTablePersonalisation="true" header="Educación formal" 
+				                       showRowCount="true" persistencyKey="SmartTableRefApp_Explored" enableAutoBinding="false" 
+				                       beforeRebindTable="onBeforeRebindEducacion" tableType="ResponsiveTable" 
+				                       demandPopin="true" initiallyVisibleFields="PERNR,TIPO_EDU,TIPO_EDU_TXT,FORMACION,INSTITU,FECHA_DE,FECHA_A">
+					<!-- layout data used to make the table growing but the filter bar fixed -->
+					<Table alternateRowColors="true" growing="true" growingScrollToLoad="true">
+						<columns>
+							<Column hAlign="Center">
+								<customData>
+									<core:CustomData key="p13nData" value="\{&quot;columnKey&quot;: &quot;PERNR&quot;, &quot;leadingProperty&quot;: &quot;PERNR&quot;, &quot;filterProperty&quot;: &quot;PERNR&quot;, &quot;columnIndex&quot;: 0}"/>
+								</customData>
+								<!--<FormattedText htmlText="&lt;strong>My Column&lt;/strong>" />-->
+								<Text text="Id empleado"/>
+							</Column>
+							<Column hAlign="Center">
+								<customData>
+									<core:CustomData key="p13nData" value="\{&quot;columnKey&quot;: &quot;TIPO_EDU&quot;, &quot;leadingProperty&quot;: &quot;TIPO_EDU&quot;, &quot;filterProperty&quot;: &quot;TIPO_EDU&quot;, &quot;columnIndex&quot;: 1}"/>
+								</customData>
+								<!--<FormattedText htmlText="&lt;strong>My Column&lt;/strong>" />-->
+								<Text text="Tipo educación"/>
+							</Column>
+							<Column hAlign="Center">
+								<customData>
+									<core:CustomData key="p13nData" value="\{&quot;columnKey&quot;: &quot;TIPO_EDU_TXT&quot;, &quot;leadingProperty&quot;: &quot;TIPO_EDU_TXT&quot;, &quot;filterProperty&quot;: &quot;TIPO_EDU_TXT&quot;, &quot;columnIndex&quot;: 2}"/>
+								</customData>
+								<!--<FormattedText htmlText="&lt;strong>My Column&lt;/strong>" />-->
+								<Text text="Texto Tipo Educación"/>
+							</Column>
+							<Column hAlign="Center">
+								<customData>
+									<core:CustomData key="p13nData" value="\{&quot;columnKey&quot;: &quot;FORMACION&quot;, &quot;leadingProperty&quot;: &quot;FORMACION&quot;, &quot;filterProperty&quot;: &quot;FORMACION&quot;, &quot;columnIndex&quot;: 3}"/>
+								</customData>
+								<!--<FormattedText htmlText="&lt;strong>My Column&lt;/strong>" />-->
+								<Text text="Formación"/>
+							</Column>
+							<Column hAlign="Center">
+								<customData>
+									<core:CustomData key="p13nData" value="\{&quot;columnKey&quot;: &quot;INSTITU&quot;, &quot;leadingProperty&quot;: &quot;INSTITU&quot;, &quot;filterProperty&quot;: &quot;INSTITU&quot;, &quot;columnIndex&quot;: 4}"/>
+								</customData>
+								<!--<FormattedText htmlText="&lt;strong>My Column&lt;/strong>" />-->
+								<Text text="Institución"/>
+							</Column>
+							<Column hAlign="Center">
+								<customData>
+									<core:CustomData key="p13nData" value="\{&quot;columnKey&quot;: &quot;FECHA_DE&quot;, &quot;leadingProperty&quot;: &quot;FECHA_DE&quot;, &quot;filterProperty&quot;: &quot;FECHA_DE&quot;, &quot;columnIndex&quot;: 5}"/>
+								</customData>
+								<!--<FormattedText htmlText="&lt;strong>My Column&lt;/strong>" />-->
+								<Text text="Fecha de"/>
+							</Column>
+							<Column hAlign="Center">
+								<customData>
+									<core:CustomData key="p13nData" value="\{&quot;columnKey&quot;: &quot;FECHA_A&quot;, &quot;leadingProperty&quot;: &quot;FECHA_A&quot;, &quot;filterProperty&quot;: &quot;FECHA_A&quot;, &quot;columnIndex&quot;: 6}"/>
+								</customData>
+								<!--<FormattedText htmlText="&lt;strong>My Column&lt;/strong>" />-->
+								<Text text="Fecha A"/>
+							</Column>
+						</columns>
+						<items>
+							<ColumnListItem>
+								<Text text="{PERNR}"/>
+								<Text text="{TIPO_EDU}"/>
+								<Text text="{TIPO_EDU_TXT}"/>
+								<Text text="{FORMACION} "/>
+								<Text text="{INSTITU}"/>
+								<Text text="{FECHA_DE}"/>
+								<Text text="{FECHA_A}"/>
+							</ColumnListItem>
+						</items>
+					</Table>
+					
+					
+					<smartTable:items/>
+				</smartTable:SmartTable>
+				<smartTable:SmartTable id="smartHistoriaLaboral" entitySet="HistoriaLaboralPrevSet" smartFilterId="smartFilterBar" useExportToExcel="true" beforeExport="onBeforeExport" useVariantManagement="false" useTablePersonalisation="true" header="Historia Laboral" showRowCount="true" persistencyKey="SmartTableRefApp_Explored" enableAutoBinding="false" beforeRebindTable="onBeforeRebindHistoriaLaboral" tableType="ResponsiveTable" demandPopin="true" initiallyVisibleFields="PERNR,EMPRESA,CARGO,FECHA_INGRESO,FECHA_RETIRO">
+					<!-- layout data used to make the table growing but the filter bar fixed -->
+					<Table alternateRowColors="true" growing="true" growingScrollToLoad="true">
+						<columns>
+							<Column hAlign="Center">
+								<customData>
+									<core:CustomData key="p13nData" value="\{&quot;columnKey&quot;: &quot;DURACION&quot;, &quot;leadingProperty&quot;: &quot;DURACION&quot;, &quot;filterProperty&quot;: &quot;DURACION&quot;, &quot;columnIndex&quot;: 3}"/>
+								</customData>
+								<!--<FormattedText htmlText="&lt;strong>My Column&lt;/strong>" />-->
+								<Text text="Duración"/>
+							</Column>
+						</columns>
+						<items>
+							<ColumnListItem>
+								<ObjectNumber number="{DURACION}" unit="AÑOS"/>
+							</ColumnListItem>
+						</items>
+					</Table>
+				</smartTable:SmartTable>
+				<smartTable:SmartTable id="smartCursosTomados" entitySet="CursosTomadosSet" smartFilterId="smartFilterBar" useExportToExcel="true" beforeExport="onBeforeExport" useVariantManagement="false" useTablePersonalisation="true" header="Cursos tomados en Mitsubishi Electric" showRowCount="true" persistencyKey="SmartTableRefApp_Explored" enableAutoBinding="false" beforeRebindTable="onBeforeRebindCursosTomados" tableType="ResponsiveTable" demandPopin="true" initiallyVisibleFields="PERNR,CURSO,INSTI,FECHA_FIN,MODALIDAD">
+					<!-- layout data used to make the table growing but the filter bar fixed -->
+				</smartTable:SmartTable>
+				<smartTable:SmartTable id="smartHistoriaLaboralMitsu" entitySet="HistoriaLabMitsuSet" smartFilterId="smartFilterBar" useExportToExcel="true" beforeExport="onBeforeExport" useVariantManagement="false" useTablePersonalisation="true" header="Historia laboral en el grupo Mitsubishi Electric" showRowCount="true" persistencyKey="SmartTableRefApp_Explored" enableAutoBinding="false" beforeRebindTable="onBeforeRebindHistLabMitsu" tableType="ResponsiveTable" demandPopin="true" initiallyVisibleFields="PAIS,COMPANY,CARGO">
+					<!-- layout data used to make the table growing but the filter bar fixed -->
+					<Table alternateRowColors="true" growing="true" growingScrollToLoad="true">
+						<columns>
+							<Column hAlign="Center">
+								<customData>
+									<core:CustomData key="p13nData" value="\{&quot;columnKey&quot;: &quot;DURACION&quot;, &quot;leadingProperty&quot;: &quot;DURACION&quot;, &quot;filterProperty&quot;: &quot;DURACION&quot;, &quot;columnIndex&quot;: 3}"/>
+								</customData>
+								<!--<FormattedText htmlText="&lt;strong>My Column&lt;/strong>" />-->
+								<Text text="Duración"/>
+							</Column>
+							<Column hAlign="Center">
+								<customData>
+									<core:CustomData key="p13nData" value="\{&quot;columnKey&quot;: &quot;FECHA_INGRESO&quot;, &quot;leadingProperty&quot;: &quot;FECHA_INGRESO&quot;, &quot;filterProperty&quot;: &quot;FECHA_INGRESO&quot;, &quot;columnIndex&quot;: 4}"/>
+								</customData>
+								<!--<FormattedText htmlText="&lt;strong>My Column&lt;/strong>" />-->
+								<Text text="Fecha Ingreso"/>
+							</Column>
+							<Column hAlign="Center">
+								<customData>
+									<core:CustomData key="p13nData" value="\{&quot;columnKey&quot;: &quot;FECHA_RETIRO&quot;, &quot;leadingProperty&quot;: &quot;FECHA_RETIRO&quot;, &quot;filterProperty&quot;: &quot;FECHA_RETIRO&quot;, &quot;columnIndex&quot;: 5}"/>
+								</customData>
+								<!--<FormattedText htmlText="&lt;strong>My Column&lt;/strong>" />-->
+								<Text text="Fecha Retiro"/>
+							</Column>
+						</columns>
+						<items>
+							<ColumnListItem>
+								<ObjectNumber number="{DURACION}" unit="AÑOS"/>
+								<Text text="{ path: 'FECHA_INGRESO' , formatter: '.FormatFecha.FormatteFecha2'} "/>
+								<Text text="{ path: 'FECHA_INGRESO' , formatter: '.FormatFecha.FormatteFecha2'} "/>
+							</ColumnListItem>
+						</items>
+					</Table>
+				</smartTable:SmartTable>
+				<smartTable:SmartTable id="smartPlanCarrear" entitySet="PlanCarreraProSet" smartFilterId="smartFilterBar" useExportToExcel="true" beforeExport="onBeforeExport" useVariantManagement="false" useTablePersonalisation="true" header="Plan de carrera propuesto" showRowCount="true" persistencyKey="SmartTableRefApp_Explored" enableAutoBinding="false" beforeRebindTable="onBeforeRebindPlanCarrera" tableType="ResponsiveTable" demandPopin="true" initiallyVisibleFields="PERNR,PAIS,COMPANY,DIVISION,CARGO">
+					<!-- layout data used to make the table growing but the filter bar fixed -->
+					<Table alternateRowColors="true" growing="true" growingScrollToLoad="true">
+						<columns>
+							<Column hAlign="Center">
+								<customData>
+									<core:CustomData key="p13nData" value="\{&quot;columnKey&quot;: &quot;DURACION&quot;, &quot;leadingProperty&quot;: &quot;DURACION&quot;, &quot;filterProperty&quot;: &quot;DURACION&quot;, &quot;columnIndex&quot;: 5}"/>
+								</customData>
+								<!--<FormattedText htmlText="&lt;strong>My Column&lt;/strong>" />-->
+								<Text text="Duración"/>
+							</Column>
+							<Column hAlign="Center">
+								<customData>
+									<core:CustomData key="p13nData" value="\{&quot;columnKey&quot;: &quot;FECHA_INICIO&quot;, &quot;leadingProperty&quot;: &quot;FECHA_INICIO&quot;, &quot;filterProperty&quot;: &quot;FECHA_INICIO&quot;, &quot;columnIndex&quot;: 6}"/>
+								</customData>
+								<!--<FormattedText htmlText="&lt;strong>My Column&lt;/strong>" />-->
+								<Text text="Fecha Inicio"/>
+							</Column>
+							<Column hAlign="Center">
+								<customData>
+									<core:CustomData key="p13nData" value="\{&quot;columnKey&quot;: &quot;FECHA_FIN&quot;, &quot;leadingProperty&quot;: &quot;FECHA_FIN&quot;, &quot;filterProperty&quot;: &quot;FECHA_FIN&quot;, &quot;columnIndex&quot;: 7}"/>
+								</customData>
+								<!--<FormattedText htmlText="&lt;strong>My Column&lt;/strong>" />-->
+								<Text text="Fecha Fin"/>
+							</Column>
+						</columns>
+						<items>
+							<ColumnListItem>
+								<ObjectNumber number="{DURACION}" unit="AÑOS"/>
+								<Text text="{ path: 'FECHA_INICIO' , formatter: '.FormatFecha.FormatteFecha2'} "/>
+								<Text text="{ path: 'FECHA_FIN' , formatter: '.FormatFecha.FormatteFecha2'} "/>
+							</ColumnListItem>
+						</items>
+					</Table>
+				</smartTable:SmartTable>
+			</layout1:VerticalLayout>
+			<HBox alignItems="Stretch" direction="Row" fitContainer="false" width="auto" height="auto" justifyContent="Start" renderType="Div" visible="true" displayInline="false">
+				<items>
+					<commons:ChartContainer id="chartContainer" showFullScreen="true" showPersonalization="false" autoAdjustHeight="true" personalizationPress="attachPersonalizationPress" contentChange="attachContentChange" title="Competencias requeridas ">
+						<commons:ChartContainerContent>
+							<commons:content>
+								<viz:VizFrame id="idpiechart" uiConfig="{applicationSet:'fiori'}" vizType="pie" vizProperties="{ plotArea:{ dataLabel:{visible: true} }, title : {text:'Competencias requeridas'} }" selectData="myOnClickHandler" renderComplete="handleRenderComplete">
+									<viz:dataset>
+										<viz.data:FlattenedDataset id="GraphicCompetenciasRequqeridas" width="500px">
+											<viz.data:dimensions>
+												<viz.data:DimensionDefinition name="Flavor" value="{Denominacion}"/>
+											</viz.data:dimensions>
+											<viz.data:measures>
+												<viz.data:MeasureDefinition name="Sales" value="{Value}"/>
+											</viz.data:measures>
+										</viz.data:FlattenedDataset>
+									</viz:dataset>
+									<viz:feeds>
+										<viz.feeds:FeedItem uid="size" type="Measure" values="Sales"/>
+										<viz.feeds:FeedItem uid="color" type="Dimension" values="Flavor"/>
+									</viz:feeds>
+								</viz:VizFrame>
+							</commons:content>
+						</commons:ChartContainerContent>
+					</commons:ChartContainer>
+					<Table id="TableCompetenciasReq" width="auto" noDataText="No data" mode="None" showSeparators="All" growing="true" growingThreshold="20" growingScrollToLoad="true">
+						<columns>
+							<Column width="auto" hAlign="Left" vAlign="Top" minScreenWidth="Phone" demandPopin="false" popinDisplay="Inline" mergeDuplicates="false">
+								<header>
+									<Text text="Competencia" width="auto" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit" visible="true"/>
+								</header>
+								<footer/>
+							</Column>
+							<Column width="auto" hAlign="Left" vAlign="Top" minScreenWidth="Tablet" demandPopin="true" popinDisplay="Inline" mergeDuplicates="false">
+								<header>
+									<Text text="Ítem" width="auto" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit" visible="true"/>
+								</header>
+								<footer/>
+							</Column>
+							<Column width="auto" hAlign="Left" vAlign="Top" minScreenWidth="Tablet" demandPopin="true" popinDisplay="Inline" mergeDuplicates="false">
+								<header>
+									<Text text="Experiencia previa" width="auto" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit" visible="true"/>
+								</header>
+								<footer/>
+							</Column>
+							<Column width="auto" hAlign="Left" vAlign="Top" minScreenWidth="Tablet" demandPopin="true" popinDisplay="Inline" mergeDuplicates="false">
+								<header>
+									<Text text="Funciones" width="auto" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit" visible="true"/>
+								</header>
+								<footer/>
+							</Column>
+							<Column width="auto" hAlign="Left" vAlign="Top" minScreenWidth="Tablet" demandPopin="true" popinDisplay="Inline" mergeDuplicates="false">
+								<header>
+									<Text text="Plan" width="auto" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit" visible="true"/>
+								</header>
+								<footer/>
+							</Column>
+						</columns>
+					</Table>
+				</items>
+				<layoutData/>
+			</HBox>
+			<HBox alignItems="Stretch" direction="Row" fitContainer="false" width="auto" height="auto" justifyContent="Start" renderType="Div" visible="true" displayInline="false">
+				<items>
+					<commons:ChartContainer id="chartContainerCaracter" width="50%" showFullScreen="true" showPersonalization="false" autoAdjustHeight="true" personalizationPress="attachPersonalizationPress" contentChange="attachContentChange" title="Competencias requeridas /Rasgos de carácter">
+						<commons:ChartContainerContent>
+							<commons:content>
+								<viz:VizFrame id="idpiechartCaracter" uiConfig="{applicationSet:'fiori'}" vizType="pie" vizProperties="{ plotArea:{ dataLabel:{visible: true} }, title : {text:'Competencias requeridas / Rasgos de carácter'} }" selectData="myOnClickHandler" renderComplete="handleRenderComplete">
+									<viz:dataset>
+										<viz.data:FlattenedDataset id="GraphicCompetenciasCaracter" width="500px">
+											<viz.data:dimensions>
+												<viz.data:DimensionDefinition name="Flavor" value="{Denominacion}"/>
+											</viz.data:dimensions>
+											<viz.data:measures>
+												<viz.data:MeasureDefinition name="Sales" value="{Value}"/>
+											</viz.data:measures>
+										</viz.data:FlattenedDataset>
+									</viz:dataset>
+									<viz:feeds>
+										<viz.feeds:FeedItem uid="size" type="Measure" values="Sales"/>
+										<viz.feeds:FeedItem uid="color" type="Dimension" values="Flavor"/>
+									</viz:feeds>
+								</viz:VizFrame>
+							</commons:content>
+						</commons:ChartContainerContent>
+					</commons:ChartContainer>
+					<Table id="TableCompetenciasReqCaracter" width="auto" noDataText="No data" mode="None" showSeparators="All" growing="true" growingThreshold="20" growingScrollToLoad="true">
+						<columns>
+							<Column width="auto" hAlign="Left" vAlign="Top" minScreenWidth="Phone" demandPopin="false" popinDisplay="Inline" mergeDuplicates="false">
+								<header>
+									<Text text="Competencia" width="auto" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit" visible="true"/>
+								</header>
+								<footer/>
+							</Column>
+							<Column width="auto" hAlign="Left" vAlign="Top" minScreenWidth="Tablet" demandPopin="true" popinDisplay="Inline" mergeDuplicates="false">
+								<header>
+									<Text text="Ítem" width="auto" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit" visible="true"/>
+								</header>
+								<footer/>
+							</Column>
+							<Column width="auto" hAlign="Left" vAlign="Top" minScreenWidth="Tablet" demandPopin="true" popinDisplay="Inline" mergeDuplicates="false">
+								<header>
+									<Text text="Experiencia previa" width="auto" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit" visible="true"/>
+								</header>
+								<footer/>
+							</Column>
+							<Column width="auto" hAlign="Left" vAlign="Top" minScreenWidth="Tablet" demandPopin="true" popinDisplay="Inline" mergeDuplicates="false">
+								<header>
+									<Text text="Funciones" width="auto" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit" visible="true"/>
+								</header>
+								<footer/>
+							</Column>
+							<Column width="auto" hAlign="Left" vAlign="Top" minScreenWidth="Tablet" demandPopin="true" popinDisplay="Inline" mergeDuplicates="false">
+								<header>
+									<Text text="Plan" width="auto" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit" visible="true"/>
+								</header>
+								<footer/>
+							</Column>
+						</columns>
+					</Table>
+				</items>
+				<layoutData/>
+			</HBox>
+		</content>
+		<footer>
+			<OverflowToolbar width="100%" height="46px" design="Auto" enabled="true" visible="true">
+				<content>
+					<ToolbarSpacer width=""/>
+					<Button text="Volver" type="Emphasized" iconFirst="true" width="auto" enabled="true" visible="true" iconDensityAware="false" press="_onButtonPress"/>
+				</content>
+			</OverflowToolbar>
+		</footer>
+		<headerContent/>
+		<subHeader/>
+		<customHeader/>
+	</Page>
+</mvc:View>

@@ -1,0 +1,20 @@
+<core:FragmentDefinition xmlns="sap.m" xmlns:core="sap.ui.core">
+		<SelectDialog
+		id="mySelectDialog"
+		noDataText="Ejecutivos no encontrados"
+		title="Seleccione un ejecutivo"
+		search=".onSearch"
+		confirm=".onDialogClose"
+		cancel=".onDialogClose"
+		items="{
+			path: '/EjecutivosSet'
+		}">
+		<StandardListItem
+			title="{NAME}"
+			description="{PERNR}"
+			info="{PBTXT}"
+			iconDensityAware="false"
+			iconInset="false"
+			type="Active" />
+	</SelectDialog>
+</core:FragmentDefinition>
